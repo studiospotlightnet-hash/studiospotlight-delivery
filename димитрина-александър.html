@@ -81,9 +81,13 @@ footer{border-top:1px solid #f3e6d0}
 .poster{position:relative;text-align:center;padding:84px 24px 64px;overflow:hidden}
 .poster .btn-play{border:1px solid #f5a623;color:#c0392b;background:transparent;margin-top:8px}
 .poster .btn-play:hover{background:#f5a623;color:#1f1a14}
-.still{width:100%}
-.still img{width:100%;height:100vh;height:100svh;object-fit:cover;display:block}
-@media(max-width:700px){.still img{height:70svh}}
+/* [27.10.2026] Снимката е ЗАД надписите, на цял екран, с лек воал за четимост */
+.poster.has-bg{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.poster.has-bg .credits,.poster.has-bg .awards,.poster.has-bg .badges{width:100%}
+.poster-bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0;transform:scale(1.02)}
+.poster-veil{position:absolute;inset:0;z-index:1;background:rgba(255,255,255,.74)}
+.poster > :not(.poster-bg):not(.poster-veil):not(.mark){position:relative;z-index:2}
+.poster > .mark{z-index:2}
 .credits{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1000px;margin:0 auto}
 .credits div{display:flex;flex-direction:column;gap:6px;align-items:center}
 .credits span{font-size:.7rem;letter-spacing:.38em;color:#f5a623;text-transform:uppercase}
@@ -97,13 +101,13 @@ footer{border-top:1px solid #f3e6d0}
 .mark{position:absolute;right:max(24px,22%);bottom:34px;font:800 .7rem 'Rubik',sans-serif;color:#1f1a14}</style>
 </head>
 <body>
-<section class="poster">
-  
+<section class="poster has-bg"><div class="poster-bg" id="heroBg"></div><div class="poster-veil"></div>
+  <div class="tagline">Всяка история заслужава своя прожектор.</div>
   <h1>Димитрина &amp; Александър</h1>
   <div class="cine-date">05 май 2026</div>
   <button class="btn-play" onclick="scrollToPlayer()"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Пусни</button>
   <div class="mark">2026</div>
-</section><div class="still"><img data-bg alt=""/></div>
+</section>
 
 <main>
   
